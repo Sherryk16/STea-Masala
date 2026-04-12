@@ -75,7 +75,48 @@ export default function Home() {
   ];
 
   return (
-    <main ref={containerRef} className="relative bg-[#Faf7f2] font-inter selection:bg-[#E5A122] selection:text-[#1F140D]">
+    <>
+      {/* JSON-LD Structured Data for SEO */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "LocalBusiness",
+            "name": "Stea Masala",
+            "alternateName": ["Steam Masala", "Stea Masala Tea"],
+            "description": "Premium masala tea crafted with natural spices: cardamom, cinnamon, saffron & high-altitude Assam black tea.",
+            "url": "https://steamasala.com",
+            "telephone": "+92-334-3747649",
+            "priceRange": "Rs. 475",
+            "areaServed": "Pakistan",
+            "sameAs": [
+              "https://www.instagram.com/steamasala_official",
+              "https://www.tiktok.com/@steamasala",
+              "https://www.facebook.com/share/1BV2QGEcsR/"
+            ],
+            "makesOffer": [
+              {
+                "@type": "Offer",
+                "itemOffered": {
+                  "@type": "Product",
+                  "name": "Steam Masala Tea",
+                  "description": "Premium masala tea blend with high-altitude Assam black tea, green cardamom, Ceylon cinnamon, star anise, saffron threads, cloves, and black pepper.",
+                  "image": "https://steamasala.com/WhatsApp Image 2026-04-08 at 11.13.42 PM.jpeg",
+                  "offers": {
+                    "@type": "AggregateOffer",
+                    "priceCurrency": "PKR",
+                    "lowPrice": "475",
+                    "highPrice": "500",
+                    "offerCount": "1"
+                  }
+                }
+              }
+            ]
+          }),
+        }}
+      />
+      <main ref={containerRef} className="relative bg-[#Faf7f2] font-inter selection:bg-[#E5A122] selection:text-[#1F140D]">
       <Navbar />
 
       {/* Hero Section */}
@@ -291,5 +332,6 @@ export default function Home() {
 
       <Footer />
     </main>
+    </>
   );
 }
