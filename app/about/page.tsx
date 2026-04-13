@@ -68,6 +68,86 @@ export default function About() {
         </div>
       </section>
 
+      {/* Founder Section */}
+      <section className="py-16 sm:py-24 xl:py-20 px-4 sm:px-6 bg-[#Faf7f2]">
+        <div className="max-w-6xl mx-auto">
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            variants={fadeInUp}
+          >
+            <div className="text-center mb-8 sm:mb-12 xl:mb-10">
+              <span className="text-[#D4A017] tracking-widest text-xs font-semibold uppercase">Meet the Founder</span>
+              <h2 className="font-playfair text-2xl sm:text-3xl md:text-4xl xl:text-3xl text-[#1F140D] mt-3">The Heart Behind Stea Masala</h2>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 sm:gap-12 lg:gap-16 xl:gap-12 items-center">
+              {/* Founder Image */}
+              <motion.div
+                initial={{ opacity: 0, x: -30 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: 0.2 }}
+                className="relative h-[350px] sm:h-[400px] xl:h-[380px] rounded-lg overflow-hidden shadow-2xl flex justify-center"
+              >
+                <img
+                  src="/founder.png"
+                  alt="Sadaf - Founder of Stea Masala"
+                  className="h-full w-auto object-cover object-[center_0%]"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#1a0a00]/30 to-transparent" />
+              </motion.div>
+
+              {/* Founder Story */}
+              <motion.div
+                initial={{ opacity: 0, x: 30 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: 0.3 }}
+                className="space-y-4 sm:space-y-6 xl:space-y-5"
+              >
+                <div>
+                  <h3 className="font-playfair text-2xl sm:text-3xl xl:text-2xl text-[#1F140D] mb-2">Sadaf</h3>
+                  <p className="text-[#C62828] font-semibold text-sm sm:text-base xl:text-sm uppercase tracking-wide">Founder & Creator</p>
+                </div>
+
+                <div className="w-16 h-1 bg-[#D4A017] rounded" />
+
+                <p className="text-[#1F140D]/80 text-base sm:text-lg xl:text-base leading-relaxed">
+                  I spent years in the corporate world at Standard Chartered, building a career that looked perfect on paper. But behind every spreadsheet and boardroom meeting, my mind kept wandering back to the kitchen—to the rich aroma of spices simmering in a pot of chai, to the warmth of tradition that no café chain could ever replicate.
+                </p>
+
+                <p className="text-[#1F140D]/80 text-base sm:text-lg xl:text-base leading-relaxed">
+                  So I made a choice. I left it all behind to create something real. In 2024, Stea Masala was born—not as a business, but as a promise. A promise that every blend would be homemade with care, every ingredient sourced with intention, and every cup would carry the depth of a legacy worth preserving.
+                </p>
+
+                <p className="text-[#1F140D]/80 text-base sm:text-lg xl:text-base leading-relaxed">
+                  This isn't just tea. It's a movement. I built Stea Masala to prove that women don't need permission to rewrite their stories. When we lift each other up, invest in each other's dreams, and refuse to settle—there's no limit to what we can build.
+                </p>
+
+                <div className="pt-4 sm:pt-6 xl:pt-4">
+                  <div className="bg-[#D4A017]/10 border-l-4 border-[#D4A017] p-4 sm:p-5 xl:p-4 rounded-r-lg">
+                    <p className="text-[#1F140D]/90 italic text-sm sm:text-base xl:text-sm font-medium">
+                      "I traded financial returns for flavor, and I've never looked back. The best ventures aren't funded by capital—they're fueled by conviction."
+                    </p>
+                  </div>
+                </div>
+
+                <div className="flex items-center gap-3 pt-4 sm:pt-6 xl:pt-4">
+                  <div className="bg-[#C62828] text-white px-3 py-2 rounded font-semibold text-xs uppercase tracking-wide">
+                    Est. 2024
+                  </div>
+                  <div className="bg-[#D4A017] text-[#1a0a00] px-3 py-2 rounded font-semibold text-xs uppercase tracking-wide">
+                    Female Founded
+                  </div>
+                </div>
+              </motion.div>
+            </div>
+          </motion.div>
+        </div>
+      </section>
+
       {/* Content */}
       <section className="py-16 sm:py-24 xl:py-20 px-4 sm:px-6 max-w-4xl mx-auto">
         <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeInUp} className="max-w-none text-[#1F140D]/80">

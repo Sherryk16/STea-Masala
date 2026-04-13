@@ -230,62 +230,115 @@ export default function Home() {
         <div className="max-w-7xl mx-auto">
           <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeInUp} className="text-center mb-10 sm:mb-16 xl:mb-12">
             <h2 className="text-2xl sm:text-3xl md:text-5xl xl:text-4xl font-playfair text-[#1F140D] mb-3 sm:mb-4 xl:mb-3">How to Prepare Your Perfect Cup</h2>
-            <p className="text-[#1F140D]/70 text-base sm:text-lg xl:text-base max-w-2xl mx-auto">Follow these simple steps to brew an authentic cup of Steam Masala chai every time.</p>
+            <p className="text-[#1F140D]/70 text-base sm:text-lg xl:text-base max-w-2xl mx-auto">Two simple ways to enjoy your Steam Masala chai - with milk or as black tea.</p>
           </motion.div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8 xl:gap-6">
-            {[
-              { step: "1", title: "Measure the Masala", desc: <>For each cup of chai, measure out <strong>1 tablespoon</strong> of Steam Masala blend.</>, border: "border-[#C62828]", icon: <><path d="M8 2v4"/><path d="M16 2v4"/><path d="M3 10h18"/><path d="M18 14a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2Z"/><path d="M3 14h18v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4Z"/></> },
-              { step: "2", title: "Add to Water", desc: <>Add the Steam Masala to <strong>one cup of water</strong> in your pot or saucepan.</>, border: "border-[#D4A017]", icon: <><path d="M12 2v6"/><path d="M12 18a6 6 0 0 0 6-6V8l-6-6-6 6v4a6 6 0 0 0 6 6Z"/><path d="M20 12a8 8 0 0 1-16 0"/></> },
-              { step: "3", title: "Brew Like Normal Chai", desc: <>Bring to a boil and let it simmer. <strong>Leave it in</strong> to allow the flavors to infuse fully.</>, border: "border-[#C62828]", icon: <><path d="M12 2a10 10 0 0 1 10 10 10 10 0 0 1-10 10A10 10 0 0 1 2 12 10 10 0 0 1 12 2Z"/><path d="M12 6v6l4 2"/></> },
-              { step: "4", title: "Mix & Enjoy", desc: <><strong>Mix well</strong> and strain into your favorite cup. Add milk and sugar to taste. Enjoy!</>, border: "border-[#D4A017]", icon: <><path d="M8 2h8l2 10H6L8 2Z"/><path d="M6 12v6a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2v-6"/><path d="M12 20v2"/><path d="M8 22h8"/></> },
-            ].map((item, idx) => (
-              <motion.div key={idx} initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: idx * 0.1 }}
-                className={`group bg-white rounded-lg p-6 sm:p-8 xl:p-6 shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 border-t-4 ${item.border}`}>
-                <div className={`w-14 h-14 sm:w-16 sm:h-16 xl:w-14 xl:h-14 ${item.border.replace("border-", "bg-[")}/80 rounded-full flex items-center justify-center mb-4 sm:mb-6 xl:mb-4 mx-auto`}>
-                  <svg xmlns="http://www.w3.org/2000/svg" className="w-6 h-6 sm:w-8 sm:h-8 xl:w-7 xl:h-7 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                    {item.icon}
-                  </svg>
-                </div>
-                <div className="text-center">
-                  <div className={`${item.border.replace("border-", "text-")} font-bold text-xs sm:text-sm xl:text-xs tracking-widest uppercase mb-1 sm:mb-2 xl:mb-1`}>Step {item.step}</div>
-                  <h3 className="text-lg sm:text-xl xl:text-lg font-playfair text-[#1F140D] mb-2 sm:mb-3 xl:mb-2">{item.title}</h3>
-                  <p className="text-[#1F140D]/70 text-xs sm:text-sm xl:text-xs leading-relaxed">{item.desc}</p>
-                </div>
-              </motion.div>
-            ))}
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-12 xl:gap-10 mb-12">
+            {/* Recipe 1: Tea with Milk */}
+            <div>
+              <h3 className="text-xl sm:text-2xl xl:text-xl font-playfair text-[#1F140D] mb-6 text-center">Masala Tea with Milk ☕</h3>
+              <div className="space-y-4">
+                {[
+                  "Pour milk into a pan and add water.",
+                  "Bring it to a boil on medium heat.",
+                  "Add 1 teaspoon masala tea leaves.",
+                  "Add sugar according to your taste.",
+                  "Let it boil for 2–3 minutes until the flavor develops.",
+                  "Strain into a cup and serve hot. ☕",
+                ].map((step, idx) => (
+                  <motion.div key={idx} initial={{ opacity: 0, x: -20 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ delay: idx * 0.1 }}
+                    className="flex items-start gap-4 bg-white rounded-lg p-4 shadow-md hover:shadow-lg transition-shadow">
+                    <div className="w-8 h-8 bg-[#C62828] text-white rounded-full flex items-center justify-center flex-shrink-0 font-bold text-sm">
+                      {idx + 1}
+                    </div>
+                    <p className="text-[#1F140D]/80 text-sm sm:text-base xl:text-sm leading-relaxed pt-1">{step}</p>
+                  </motion.div>
+                ))}
+              </div>
+            </div>
+
+            {/* Recipe 2: Black Tea */}
+            <div>
+              <h3 className="text-xl sm:text-2xl xl:text-xl font-playfair text-[#1F140D] mb-6 text-center">Black Tea ☕</h3>
+              <div className="space-y-4">
+                {[
+                  "Pour 1 cup of water into a pan.",
+                  "Bring it to a boil.",
+                  "Add 1 teaspoon masala tea leaves.",
+                  "Let it boil for 2–3 minutes.",
+                  "Strain into a cup.",
+                  "Serve hot ☕",
+                ].map((step, idx) => (
+                  <motion.div key={idx} initial={{ opacity: 0, x: -20 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ delay: idx * 0.1 }}
+                    className="flex items-start gap-4 bg-white rounded-lg p-4 shadow-md hover:shadow-lg transition-shadow">
+                    <div className="w-8 h-8 bg-[#D4A017] text-white rounded-full flex items-center justify-center flex-shrink-0 font-bold text-sm">
+                      {idx + 1}
+                    </div>
+                    <p className="text-[#1F140D]/80 text-sm sm:text-base xl:text-sm leading-relaxed pt-1">{step}</p>
+                  </motion.div>
+                ))}
+              </div>
+            </div>
           </div>
 
           {/* Quick Reference Card */}
           <motion.div initial={{ opacity: 0, scale: 0.95 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }} transition={{ delay: 0.5 }}
-            className="mt-10 sm:mt-16 xl:mt-12 bg-[#1a0a00] text-white rounded-lg p-6 sm:p-8 md:p-12 xl:p-8 text-center shadow-2xl">
-            <h3 className="text-xl sm:text-2xl md:text-3xl xl:text-2xl font-playfair text-[#D4A017] mb-4 sm:mb-6 xl:mb-4">Quick Reference</h3>
-            <div className="flex flex-col md:flex-row items-center justify-center gap-4 sm:gap-6 md:gap-12 xl:gap-8 text-base sm:text-lg xl:text-base">
-              {[
-                { num: "1", label: "1 Cup Chai", sub: "Per serving", bg: "bg-[#C62828]" },
-                { symbol: "+", type: "symbol" },
-                { num: "1", label: "1 Tbsp Steam Masala", sub: "Per cup", bg: "bg-[#D4A017]", textDark: true },
-                { symbol: "=", type: "symbol" },
-                { icon: <path d="M18.5 3H6a1 1 0 0 0-1 1v10.5A3.5 3.5 0 0 0 8.5 18h8a3.5 3.5 0 0 0 3.5-3.5V4a1 1 0 0 0-1-1zM6 21h12v2H6z"/>, label: "Perfect Masala Chai", sub: "Ready to enjoy", bg: "bg-[#C62828]" },
-              ].map((item, i) => (
-                item.type === "symbol" ? (
-                  <div key={i} className="text-[#D4A017] text-xl sm:text-2xl font-bold">{item.symbol}</div>
-                ) : (
-                  <div key={i} className="flex items-center gap-2 sm:gap-3 xl:gap-2">
-                    <div className={`w-10 h-10 sm:w-12 sm:h-12 xl:w-10 xl:h-10 ${item.bg} rounded-full flex items-center justify-center flex-shrink-0`}>
-                      {item.icon ? (
-                        <svg xmlns="http://www.w3.org/2000/svg" className="w-5 h-5 sm:w-6 sm:h-6 xl:w-5 xl:h-5 text-white" viewBox="0 0 24 24" fill="currentColor">{item.icon}</svg>
-                      ) : (
-                        <span className={`font-bold ${item.textDark ? "text-[#1a0a00]" : "text-white"} text-sm sm:text-base xl:text-sm`}>{item.num}</span>
-                      )}
+            className="bg-[#1a0a00] text-white rounded-lg p-6 sm:p-8 md:p-12 xl:p-8 shadow-2xl">
+            <h3 className="text-xl sm:text-2xl md:text-3xl xl:text-2xl font-playfair text-[#D4A017] mb-6 sm:mb-8 xl:mb-6 text-center">Quick Reference</h3>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 xl:gap-6">
+              {/* Masala Tea with Milk */}
+              <div className="text-center">
+                <h4 className="text-lg sm:text-xl xl:text-lg font-playfair text-[#D4A017] mb-4">Masala Tea with Milk</h4>
+                <div className="flex items-center justify-center gap-3 sm:gap-4 xl:gap-3 text-base sm:text-lg xl:text-base">
+                  <div className="flex items-center gap-2">
+                    <div className="w-10 h-10 sm:w-12 sm:h-12 xl:w-10 xl:h-10 bg-[#C62828] rounded-full flex items-center justify-center">
+                      <svg xmlns="http://www.w3.org/2000/svg" className="w-5 h-5 sm:w-6 sm:h-6 xl:w-5 xl:h-5 text-white" viewBox="0 0 24 24" fill="currentColor"><path d="M18.5 3H6a1 1 0 0 0-1 1v10.5A3.5 3.5 0 0 0 8.5 18h8a3.5 3.5 0 0 0 3.5-3.5V4a1 1 0 0 0-1-1zM6 21h12v2H6z"/></svg>
                     </div>
-                    <div className="text-left">
-                      <div className="font-semibold text-xs sm:text-base xl:text-xs">{item.label}</div>
-                      <div className="text-white/60 text-xs">{item.sub}</div>
-                    </div>
+                    <span className="text-xs sm:text-sm xl:text-xs font-semibold">1 cup water + milk</span>
                   </div>
-                )
-              ))}
+                  <span className="text-[#D4A017] text-xl font-bold">+</span>
+                  <div className="flex items-center gap-2">
+                    <div className="w-10 h-10 sm:w-12 sm:h-12 xl:w-10 xl:h-10 bg-[#D4A017] rounded-full flex items-center justify-center">
+                      <span className="font-bold text-[#1a0a00] text-sm sm:text-base xl:text-sm">1</span>
+                    </div>
+                    <span className="text-xs sm:text-sm xl:text-xs font-semibold">1 tsp Masala</span>
+                  </div>
+                  <span className="text-[#D4A017] text-xl font-bold">=</span>
+                  <div className="flex items-center gap-2">
+                    <div className="w-10 h-10 sm:w-12 sm:h-12 xl:w-10 xl:h-10 bg-[#C62828] rounded-full flex items-center justify-center">
+                      <svg xmlns="http://www.w3.org/2000/svg" className="w-5 h-5 sm:w-6 sm:h-6 xl:w-5 xl:h-5 text-white" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 1 10 10 10 10 0 0 1-10 10A10 10 0 0 1 2 12 10 10 0 0 1 12 2Z"/><path d="M12 6v6l4 2"/></svg>
+                    </div>
+                    <span className="text-xs sm:text-sm xl:text-xs font-semibold">Perfect Chai ☕</span>
+                  </div>
+                </div>
+              </div>
+
+              {/* Black Tea */}
+              <div className="text-center">
+                <h4 className="text-lg sm:text-xl xl:text-lg font-playfair text-[#D4A017] mb-4">Black Tea</h4>
+                <div className="flex items-center justify-center gap-3 sm:gap-4 xl:gap-3 text-base sm:text-lg xl:text-base">
+                  <div className="flex items-center gap-2">
+                    <div className="w-10 h-10 sm:w-12 sm:h-12 xl:w-10 xl:h-10 bg-[#D4A017] rounded-full flex items-center justify-center">
+                      <span className="font-bold text-[#1a0a00] text-sm sm:text-base xl:text-sm">1</span>
+                    </div>
+                    <span className="text-xs sm:text-sm xl:text-xs font-semibold">1 cup water</span>
+                  </div>
+                  <span className="text-[#D4A017] text-xl font-bold">+</span>
+                  <div className="flex items-center gap-2">
+                    <div className="w-10 h-10 sm:w-12 sm:h-12 xl:w-10 xl:h-10 bg-[#D4A017] rounded-full flex items-center justify-center">
+                      <span className="font-bold text-[#1a0a00] text-sm sm:text-base xl:text-sm">1</span>
+                    </div>
+                    <span className="text-xs sm:text-sm xl:text-xs font-semibold">1 tsp Masala</span>
+                  </div>
+                  <span className="text-[#D4A017] text-xl font-bold">=</span>
+                  <div className="flex items-center gap-2">
+                    <div className="w-10 h-10 sm:w-12 sm:h-12 xl:w-10 xl:h-10 bg-[#C62828] rounded-full flex items-center justify-center">
+                      <svg xmlns="http://www.w3.org/2000/svg" className="w-5 h-5 sm:w-6 sm:h-6 xl:w-5 xl:h-5 text-white" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 1 10 10 10 10 0 0 1-10 10A10 10 0 0 1 2 12 10 10 0 0 1 12 2Z"/><path d="M12 6v6l4 2"/></svg>
+                    </div>
+                    <span className="text-xs sm:text-sm xl:text-xs font-semibold">Black Tea ☕</span>
+                  </div>
+                </div>
+              </div>
             </div>
           </motion.div>
         </div>
