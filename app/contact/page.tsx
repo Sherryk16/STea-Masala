@@ -47,9 +47,12 @@ export default function Contact() {
         e.currentTarget.reset();
         setTimeout(() => setFormStatus("idle"), 5000);
       } else {
+        const errorData = await response.json();
+        console.error("Form error:", errorData);
         setFormStatus("error");
       }
     } catch (error) {
+      console.error("Form submission error:", error);
       setFormStatus("error");
     }
   };

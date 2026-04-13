@@ -23,8 +23,16 @@ export const metadata: Metadata = {
   keywords: [
     "masala tea",
     "masala chai",
-    "premium tea",
+    "chai tea",
+    "chai tea leaves",
+    "masala chai recipe",
+    "flavoured tea",
+    "flavor tea",
+    "tea masala",
     "spiced tea",
+    "masala chai Pakistan",
+    "chai masala",
+    "premium tea",
     "Stea Masala",
     "Steam Masala",
     "masala tea Pakistan",
@@ -36,6 +44,21 @@ export const metadata: Metadata = {
     "tea delivery Pakistan",
     "best masala tea",
     "authentic chai",
+    "homemade masala chai",
+    "traditional chai",
+    "indian masala tea",
+    "spiced chai",
+    "herbal tea Pakistan",
+    "organic masala tea",
+    "chai tea online",
+    "buy masala tea",
+    "tea leaves Pakistan",
+    "masala chai blend",
+    "premium chai tea",
+    "steamasala",
+    "steam masala tea",
+    "tea brand Pakistan",
+    "female founded tea brand",
   ],
   authors: [{ name: "Stea Masala" }],
   creator: "Stea Masala",
@@ -57,7 +80,7 @@ export const metadata: Metadata = {
     siteName: "Stea Masala",
     images: [
       {
-        url: "/og-image.png",
+        url: "https://steamasala.com/og-image.png",
         width: 1200,
         height: 630,
         alt: "Stea Masala – Premium Masala Tea",
@@ -108,6 +131,43 @@ export default function RootLayout({
     >
       <head>
         <link rel="canonical" href="https://steamasala.com" />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "Recipe",
+              "name": "Stea Masala Chai Recipe",
+              "description": "Traditional homemade masala chai recipe by Stea Masala - Pakistan's premium masala tea blend crafted with natural spices: cardamom, cinnamon, saffron & high-altitude Assam black tea.",
+              "author": {
+                "@type": "Person",
+                "name": "Sadaf",
+                "description": "Former Standard Chartered banker turned tea entrepreneur, founder of Stea Masala",
+              },
+              "datePublished": "2024-01-01",
+              "prepTime": "PT5M",
+              "cookTime": "PT5M",
+              "totalTime": "PT10M",
+              "recipeYield": "1 cup",
+              "recipeCategory": "Beverage",
+              "recipeCuisine": "Pakistani",
+              "keywords": "masala chai, chai tea, masala tea, chai recipe, spiced tea, tea leaves",
+              "recipeIngredient": [
+                "1 tsp Stea Masala tea blend",
+                "1 cup water",
+                "1 cup milk",
+                "sugar to taste",
+              ],
+              "recipeInstructions": [
+                { "@type": "HowToStep", "name": "Pour milk and water", "text": "Pour milk into a pan and add water." },
+                { "@type": "HowToStep", "name": "Boil", "text": "Bring it to a boil on medium heat." },
+                { "@type": "HowToStep", "name": "Add masala tea", "text": "Add 1 teaspoon masala tea leaves." },
+                { "@type": "HowToStep", "name": "Simmer", "text": "Let it boil for 2–3 minutes until the flavor develops." },
+                { "@type": "HowToStep", "name": "Strain and serve", "text": "Strain into a cup and serve hot." },
+              ],
+            }),
+          }}
+        />
       </head>
       <body className="min-h-full flex flex-col">
         {children}

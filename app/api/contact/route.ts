@@ -8,6 +8,10 @@ export async function POST(request: Request) {
     const body = await request.json();
     const { firstName, lastName, email, phone, message } = body;
 
+    console.log('Sending email via Resend...');
+    console.log('From:', 'Stea Masala <onboarding@resend.dev>');
+    console.log('To:', 'steamasala@gmail.com');
+
     const { data, error } = await resend.emails.send({
       from: 'Stea Masala <onboarding@resend.dev>',
       to: ['steamasala@gmail.com'],
@@ -26,11 +30,14 @@ export async function POST(request: Request) {
     });
 
     if (error) {
+      console.error('Resend error:', error);
       return NextResponse.json({ error: error.message }, { status: 400 });
     }
 
+    console.log('Email sent successfully:', data);
     return NextResponse.json({ success: true, data });
-  } catch (error) {
-    return NextResponse.json({ error: 'Internal Server Error' }, { status: 500 });
+  } catch (error: any) {
+    console.error('Server error:', error);
+    return NextResponse.json({ error: error.message || 'Internal Server Error' }, { status: 500 });
   }
 }
