@@ -30,22 +30,19 @@ export default function Contact() {
     const message = formData.get("Message") as string;
 
     try {
-      const response = await fetch("https://api.web3forms.com/submit", {
+      const response = await fetch("/api/contact", {
         method: "POST",
-        headers: { "Content-Type": "application/json", Accept: "application/json" },
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          access_key: "re_fKziN5Gn_7swiboF4DKNRXthfkA8UuVM7",
-          subject: `New Inquiry from Stea Masala Website - ${firstName} ${lastName}`,
-          from_name: `${firstName} ${lastName}`,
-          email: email,
-          phone: phone || "Not provided",
-          message: message,
+          firstName,
+          lastName,
+          email,
+          phone,
+          message,
         }),
       });
 
-      const data = await response.json();
-
-      if (data.success) {
+      if (response.ok) {
         setFormStatus("success");
         e.currentTarget.reset();
         setTimeout(() => setFormStatus("idle"), 5000);
