@@ -6,6 +6,6 @@ export default function robots() {
         allow: "/",
       },
     ],
-    sitemap: "https://steamasala.com/sitemap.xml",
+    sitemap: "https://www.steamasala.com/sitemap.xml",
   };
 }
