@@ -16,10 +16,11 @@ export default function Contact() {
     visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: "easeOut" as const } }
   };
 
-  const [formStatus, setFormStatus] = useState<"idle" | "success">("idle");
+  const [formStatus, setFormStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    setFormStatus("loading");
 
     const formData = new FormData(e.currentTarget);
     const firstName = formData.get("First Name") as string;
@@ -28,23 +29,32 @@ export default function Contact() {
     const phone = formData.get("Phone") as string;
     const message = formData.get("Message") as string;
 
-    // Build WhatsApp message
-    const whatsappText = `Hello! I'm contacting you from the Stea Masala website.\n\n` +
-      `*Name:* ${firstName} ${lastName}\n` +
-      `*Email:* ${email}\n` +
-      `${phone ? `*Phone:* ${phone}\n` : ""}` +
-      `*Message:* ${message}`;
+    try {
+      const response = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        headers: { "Content-Type": "application/json", Accept: "application/json" },
+        body: JSON.stringify({
+          access_key: "re_fKziN5Gn_7swiboF4DKNRXthfkA8UuVM7",
+          subject: `New Inquiry from Stea Masala Website - ${firstName} ${lastName}`,
+          from_name: `${firstName} ${lastName}`,
+          email: email,
+          phone: phone || "Not provided",
+          message: message,
+        }),
+      });
 
-    const encodedMessage = encodeURIComponent(whatsappText);
-    const whatsappURL = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodedMessage}`;
+      const data = await response.json();
 
-    // Open WhatsApp
-    window.open(whatsappURL, "_blank");
-
-    // Show success
-    setFormStatus("success");
-    e.currentTarget.reset();
-    setTimeout(() => setFormStatus("idle"), 5000);
+      if (data.success) {
+        setFormStatus("success");
+        e.currentTarget.reset();
+        setTimeout(() => setFormStatus("idle"), 5000);
+      } else {
+        setFormStatus("error");
+      }
+    } catch (error) {
+      setFormStatus("error");
+    }
   };
 
   return (
@@ -137,7 +147,26 @@ export default function Contact() {
                       <svg xmlns="http://www.w3.org/2000/svg" className="w-8 h-8 sm:w-10 sm:h-10 xl:w-8 xl:h-8 text-green-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M20 6 9 17l-5-5"/></svg>
                     </div>
                     <h4 className="text-xl sm:text-2xl xl:text-xl font-playfair text-[#1F140D] mb-2 xl:mb-1">Message Sent!</h4>
-                    <p className="text-[#1F140D]/70 text-sm sm:text-base xl:text-sm">WhatsApp has opened with your message. We'll get back to you shortly.</p>
+                    <p className="text-[#1F140D]/70 text-sm sm:text-base xl:text-sm">Thank you for reaching out. We'll respond within 24 hours.</p>
+                  </motion.div>
+                ) : formStatus === "error" ? (
+                  <motion.div
+                    key="error"
+                    initial={{ opacity: 0, scale: 0.9 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    exit={{ opacity: 0 }}
+                    className="absolute inset-0 flex flex-col items-center justify-center bg-white p-8 xl:p-6 text-center z-10"
+                  >
+                    <div className="w-16 h-16 sm:w-20 sm:h-20 xl:w-16 xl:h-16 bg-red-100 rounded-full flex items-center justify-center mb-4 xl:mb-3">
+                      <svg xmlns="http://www.w3.org/2000/svg" className="w-8 h-8 sm:w-10 sm:h-10 xl:w-8 xl:h-8 text-red-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><circle cx="12" cy="12" r="10"/><path d="m15 9-6 6"/><path d="m9 9 6 6"/></svg>
+                    </div>
+                    <h4 className="text-xl sm:text-2xl xl:text-xl font-playfair text-[#1F140D] mb-2 xl:mb-1">Something went wrong</h4>
+                    <p className="text-[#1F140D]/70 mb-4 xl:mb-3 text-sm sm:text-base xl:text-sm">Please try again or contact us directly:</p>
+                    <div className="flex flex-col gap-2 mb-4 xl:mb-3">
+                      <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer" className="text-[#25D366] font-semibold hover:underline text-sm sm:text-base xl:text-sm">WhatsApp Us →</a>
+                      <a href="mailto:steamasala@gmail.com" className="text-[#EA4335] font-semibold hover:underline text-sm sm:text-base xl:text-sm">Email Us →</a>
+                    </div>
+                    <button onClick={() => setFormStatus("idle")} className="text-[#C62828] font-semibold hover:underline text-sm sm:text-base xl:text-sm">Try Again</button>
                   </motion.div>
                 ) : (
                   <motion.form key="form" onSubmit={handleSubmit} className="space-y-5 xl:space-y-4">
@@ -165,11 +194,14 @@ export default function Contact() {
                      </div>
                      <button
                        type="submit"
-                       className="w-full py-3 sm:py-4 xl:py-3 font-semibold tracking-widest uppercase transition-all rounded-sm mt-2 shadow-lg text-sm sm:text-base xl:text-sm bg-gradient-to-r from-[#C62828] to-[#B71C1C] hover:from-[#B71C1C] hover:to-[#A01515] hover:shadow-xl shadow-[#C62828]/30 text-white"
+                       disabled={formStatus === "loading"}
+                       className={`w-full py-3 sm:py-4 xl:py-3 font-semibold tracking-widest uppercase transition-all rounded-sm mt-2 shadow-lg text-sm sm:text-base xl:text-sm ${
+                         formStatus === "loading" ? "bg-gray-400 cursor-not-allowed" : "bg-gradient-to-r from-[#C62828] to-[#B71C1C] hover:from-[#B71C1C] hover:to-[#A01515] hover:shadow-xl shadow-[#C62828]/30"
+                       } text-white`}
                      >
-                       Send via WhatsApp
+                       {formStatus === "loading" ? "Sending..." : "Send Message"}
                      </button>
-                     <p className="text-[#1F140D]/40 text-xs text-center mt-2">Opens WhatsApp with your message pre-filled</p>
+                     <p className="text-[#1F140D]/40 text-xs text-center mt-2">We'll respond within 24 hours</p>
                   </motion.form>
                 )}
               </AnimatePresence>
