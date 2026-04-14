@@ -20,7 +20,6 @@ export default function Contact() {
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    setFormStatus("loading");
 
     const formData = new FormData(e.currentTarget);
     const data = Object.fromEntries(formData);
