@@ -8,7 +8,7 @@ import Footer from "@/components/Footer";
 
 // WhatsApp number
 const WHATSAPP_NUMBER = "923343747649";
-const WHATSAPP_MESSAGE = encodeURIComponent("Hello! I'd like to order Steam Masala Tea.");
+const WHATSAPP_MESSAGE = encodeURIComponent("Hello! I'd like to order Stea Masala Tea.");
 const WHATSAPP_URL = `https://wa.me/${WHATSAPP_NUMBER}?text=${WHATSAPP_MESSAGE}`;
 
 // Product images for slider
@@ -39,7 +39,7 @@ function ProductImageSlider() {
           key={src}
           className={`absolute inset-0 transition-opacity duration-700 ${index === currentIndex ? "opacity-100 z-10" : "opacity-0 z-0"}`}
         >
-          <Image src={src} alt={`Steam Masala Tea - View ${index + 1}`} fill className="object-contain p-4 sm:p-6" />
+          <Image src={src} alt={`Stea Masala Tea - View ${index + 1}`} fill className="object-contain p-4 sm:p-6" />
         </div>
       ))}
       <div className="absolute bottom-4 sm:bottom-6 left-1/2 -translate-x-1/2 z-20 flex gap-2">
@@ -84,7 +84,7 @@ export default function Home() {
             "@context": "https://schema.org",
             "@type": "LocalBusiness",
             "name": "Stea Masala",
-            "alternateName": ["Steam Masala", "Stea Masala Tea"],
+            "alternateName": ["Stea Masala", "Stea Masala Tea"],
             "description": "Premium masala tea crafted with natural spices: cardamom, cinnamon, saffron & high-altitude Assam black tea.",
             "url": "https://steamasala.com",
             "telephone": "+92-334-3747649",
@@ -100,7 +100,7 @@ export default function Home() {
                 "@type": "Offer",
                 "itemOffered": {
                   "@type": "Product",
-                  "name": "Steam Masala Tea",
+                  "name": "Stea Masala Tea",
                   "description": "Premium masala tea blend with high-altitude Assam black tea, green cardamom, Ceylon cinnamon, star anise, saffron threads, cloves, and black pepper.",
                   "image": "https://steamasala.com/WhatsApp Image 2026-04-08 at 11.13.42 PM.jpeg",
                   "offers": {
@@ -169,7 +169,7 @@ export default function Home() {
                 <div className="inline-block py-1.5 px-4 mb-3 sm:mb-4 xl:mb-3 border border-[#D4A017]/30 rounded-full bg-[#D4A017]/10 text-[#D4A017] tracking-widest text-[10px] sm:text-xs xl:text-[10px] font-semibold uppercase w-fit">
                   Our Signature Product
                 </div>
-                <h3 className="text-2xl sm:text-3xl md:text-4xl xl:text-3xl font-playfair text-[#1F140D] mb-2 sm:mb-3 xl:mb-2">Steam Masala Tea</h3>
+                <h3 className="text-2xl sm:text-3xl md:text-4xl xl:text-3xl font-playfair text-[#1F140D] mb-2 sm:mb-3 xl:mb-2">Stea Masala Tea</h3>
                 <div className="flex items-center gap-2 sm:gap-3 xl:gap-2 mb-3 sm:mb-4 xl:mb-3 flex-wrap">
                   <span className="text-2xl sm:text-3xl xl:text-2xl font-bold text-[#C62828]">Rs. 475</span>
                   <span className="text-base sm:text-xl xl:text-base text-[#1F140D]/40 line-through">Rs. 500</span>
@@ -230,7 +230,7 @@ export default function Home() {
         <div className="max-w-7xl mx-auto">
           <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeInUp} className="text-center mb-10 sm:mb-16 xl:mb-12">
             <h2 className="text-2xl sm:text-3xl md:text-5xl xl:text-4xl font-playfair text-[#1F140D] mb-3 sm:mb-4 xl:mb-3">How to Prepare Your Perfect Cup</h2>
-            <p className="text-[#1F140D]/70 text-base sm:text-lg xl:text-base max-w-2xl mx-auto">Two simple ways to enjoy your Steam Masala chai - with milk or as black tea.</p>
+            <p className="text-[#1F140D]/70 text-base sm:text-lg xl:text-base max-w-2xl mx-auto">Two simple ways to enjoy your Stea Masala chai - with milk or as black tea.</p>
           </motion.div>
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-12 xl:gap-10 mb-12">

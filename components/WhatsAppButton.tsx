@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 
 // WhatsApp number - update this if needed (use international format without +)
 const WHATSAPP_NUMBER = "923343747649";
-const WHATSAPP_MESSAGE = encodeURIComponent("Hello! I'd like to order Steam Masala Tea.");
+const WHATSAPP_MESSAGE = encodeURIComponent("Hello! I'd like to order Stea Masala Tea.");
 
 export default function WhatsAppButton() {
   const whatsappUrl = `https://wa.me/${WHATSAPP_NUMBER}?text=${WHATSAPP_MESSAGE}`;

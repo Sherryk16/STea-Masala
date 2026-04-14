@@ -5,7 +5,7 @@ import Image from "next/image";
 import { MessageCircle } from "lucide-react";
 
 const WHATSAPP_NUMBER = "923343747649";
-const WHATSAPP_MESSAGE = encodeURIComponent("Hello! I'd like to order Steam Masala Tea.");
+const WHATSAPP_MESSAGE = encodeURIComponent("Hello! I'd like to order Stea Masala Tea.");
 const WHATSAPP_URL = `https://wa.me/${WHATSAPP_NUMBER}?text=${WHATSAPP_MESSAGE}`;
 
 export default function Footer() {

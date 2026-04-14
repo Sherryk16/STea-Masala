@@ -7,7 +7,7 @@ import { Mail } from "lucide-react";
 import { useState } from "react";
 
 const WHATSAPP_NUMBER = "923343747649";
-const WHATSAPP_MESSAGE = encodeURIComponent("Hello! I'd like to order Steam Masala Tea.");
+const WHATSAPP_MESSAGE = encodeURIComponent("Hello! I'd like to order Stea Masala Tea.");
 const WHATSAPP_URL = `https://wa.me/${WHATSAPP_NUMBER}?text=${WHATSAPP_MESSAGE}`;
 
 export default function Contact() {
@@ -16,45 +16,33 @@ export default function Contact() {
     visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: "easeOut" as const } }
   };
 
-  const [formStatus, setFormStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
+  const [formStatus, setFormStatus] = useState<"idle" | "success">("idle");
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setFormStatus("loading");
 
     const formData = new FormData(e.currentTarget);
-    const firstName = formData.get("First Name") as string;
-    const lastName = formData.get("Last Name") as string;
-    const email = formData.get("Email") as string;
-    const phone = formData.get("Phone") as string;
-    const message = formData.get("Message") as string;
+    const data = Object.fromEntries(formData);
 
-    try {
-      const response = await fetch("/api/contact", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          firstName,
-          lastName,
-          email,
-          phone,
-          message,
-        }),
-      });
+    fetch("https://formsubmit.co/ajax/steamasala@gmail.com", {
+      method: "POST",
+      headers: { 
+        "Content-Type": "application/json", 
+        "Accept": "application/json",
+      },
+      body: JSON.stringify({ 
+        _subject: "New Inquiry from Stea Masala Website", 
+        ...data,
+        _captcha: "false",
+        _template: "table",
+      }),
+    });
 
-      if (response.ok) {
-        setFormStatus("success");
-        e.currentTarget.reset();
-        setTimeout(() => setFormStatus("idle"), 5000);
-      } else {
-        const errorData = await response.json();
-        console.error("Form error:", errorData);
-        setFormStatus("error");
-      }
-    } catch (error) {
-      console.error("Form submission error:", error);
-      setFormStatus("error");
-    }
+    const form = e.currentTarget;
+    form.reset();
+    setFormStatus("success");
+    setTimeout(() => setFormStatus("idle"), 5000);
   };
 
   return (
@@ -149,25 +137,6 @@ export default function Contact() {
                     <h4 className="text-xl sm:text-2xl xl:text-xl font-playfair text-[#1F140D] mb-2 xl:mb-1">Message Sent!</h4>
                     <p className="text-[#1F140D]/70 text-sm sm:text-base xl:text-sm">Thank you for reaching out. We'll respond within 24 hours.</p>
                   </motion.div>
-                ) : formStatus === "error" ? (
-                  <motion.div
-                    key="error"
-                    initial={{ opacity: 0, scale: 0.9 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    exit={{ opacity: 0 }}
-                    className="absolute inset-0 flex flex-col items-center justify-center bg-white p-8 xl:p-6 text-center z-10"
-                  >
-                    <div className="w-16 h-16 sm:w-20 sm:h-20 xl:w-16 xl:h-16 bg-red-100 rounded-full flex items-center justify-center mb-4 xl:mb-3">
-                      <svg xmlns="http://www.w3.org/2000/svg" className="w-8 h-8 sm:w-10 sm:h-10 xl:w-8 xl:h-8 text-red-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><circle cx="12" cy="12" r="10"/><path d="m15 9-6 6"/><path d="m9 9 6 6"/></svg>
-                    </div>
-                    <h4 className="text-xl sm:text-2xl xl:text-xl font-playfair text-[#1F140D] mb-2 xl:mb-1">Something went wrong</h4>
-                    <p className="text-[#1F140D]/70 mb-4 xl:mb-3 text-sm sm:text-base xl:text-sm">Please try again or contact us directly:</p>
-                    <div className="flex flex-col gap-2 mb-4 xl:mb-3">
-                      <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer" className="text-[#25D366] font-semibold hover:underline text-sm sm:text-base xl:text-sm">WhatsApp Us →</a>
-                      <a href="mailto:steamasala@gmail.com" className="text-[#EA4335] font-semibold hover:underline text-sm sm:text-base xl:text-sm">Email Us →</a>
-                    </div>
-                    <button onClick={() => setFormStatus("idle")} className="text-[#C62828] font-semibold hover:underline text-sm sm:text-base xl:text-sm">Try Again</button>
-                  </motion.div>
                 ) : (
                   <motion.form key="form" onSubmit={handleSubmit} className="space-y-5 xl:space-y-4">
                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6 xl:gap-4">
@@ -194,12 +163,9 @@ export default function Contact() {
                      </div>
                      <button
                        type="submit"
-                       disabled={formStatus === "loading"}
-                       className={`w-full py-3 sm:py-4 xl:py-3 font-semibold tracking-widest uppercase transition-all rounded-sm mt-2 shadow-lg text-sm sm:text-base xl:text-sm ${
-                         formStatus === "loading" ? "bg-gray-400 cursor-not-allowed" : "bg-gradient-to-r from-[#C62828] to-[#B71C1C] hover:from-[#B71C1C] hover:to-[#A01515] hover:shadow-xl shadow-[#C62828]/30"
-                       } text-white`}
+                       className="w-full py-3 sm:py-4 xl:py-3 font-semibold tracking-widest uppercase transition-all rounded-sm mt-2 shadow-lg text-sm sm:text-base xl:text-sm bg-gradient-to-r from-[#C62828] to-[#B71C1C] hover:from-[#B71C1C] hover:to-[#A01515] hover:shadow-xl shadow-[#C62828]/30 text-white"
                      >
-                       {formStatus === "loading" ? "Sending..." : "Send Message"}
+                       Send Message
                      </button>
                      <p className="text-[#1F140D]/40 text-xs text-center mt-2">We'll respond within 24 hours</p>
                   </motion.form>
