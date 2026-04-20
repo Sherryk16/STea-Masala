@@ -16,6 +16,8 @@ const productImages = [
   "/WhatsApp Image 2026-04-08 at 11.13.42 PM.jpeg",
   "/WhatsApp Image 2026-04-08 at 11.13.42 PM (1).jpeg",
   "/WhatsApp Image 2026-04-08 at 11.13.42 PM (2).jpeg",
+  "/Gemini_Generated_Image_uxe8ucuxe8ucuxe8.png",
+  "/Gemini_Generated_Image_y674oly674oly674.png",
 ];
 
 function ProductImageSlider() {
@@ -289,7 +291,7 @@ export default function Home() {
               {/* Masala Tea with Milk */}
               <div className="text-center">
                 <h4 className="text-lg sm:text-xl xl:text-lg font-playfair text-[#D4A017] mb-4">Masala Tea with Milk</h4>
-                <div className="flex items-center justify-center gap-3 sm:gap-4 xl:gap-3 text-base sm:text-lg xl:text-base">
+                <div className="flex flex-wrap items-center justify-center gap-2 sm:gap-3 xl:gap-3 text-base sm:text-lg xl:text-base">
                   <div className="flex items-center gap-2">
                     <div className="w-10 h-10 sm:w-12 sm:h-12 xl:w-10 xl:h-10 bg-[#C62828] rounded-full flex items-center justify-center">
                       <svg xmlns="http://www.w3.org/2000/svg" className="w-5 h-5 sm:w-6 sm:h-6 xl:w-5 xl:h-5 text-white" viewBox="0 0 24 24" fill="currentColor"><path d="M18.5 3H6a1 1 0 0 0-1 1v10.5A3.5 3.5 0 0 0 8.5 18h8a3.5 3.5 0 0 0 3.5-3.5V4a1 1 0 0 0-1-1zM6 21h12v2H6z"/></svg>
@@ -316,7 +318,7 @@ export default function Home() {
               {/* Black Tea */}
               <div className="text-center">
                 <h4 className="text-lg sm:text-xl xl:text-lg font-playfair text-[#D4A017] mb-4">Black Tea</h4>
-                <div className="flex items-center justify-center gap-3 sm:gap-4 xl:gap-3 text-base sm:text-lg xl:text-base">
+                <div className="flex flex-wrap items-center justify-center gap-2 sm:gap-3 xl:gap-3 text-base sm:text-lg xl:text-base">
                   <div className="flex items-center gap-2">
                     <div className="w-10 h-10 sm:w-12 sm:h-12 xl:w-10 xl:h-10 bg-[#D4A017] rounded-full flex items-center justify-center">
                       <span className="font-bold text-[#1a0a00] text-sm sm:text-base xl:text-sm">1</span>
