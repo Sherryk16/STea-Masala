@@ -2,64 +2,84 @@
 
 import Image from "next/image";
 import { motion, useScroll, useTransform } from "framer-motion";
-import { useRef, useState, useEffect } from "react";
+import { useRef } from "react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 
 // WhatsApp number
 const WHATSAPP_NUMBER = "923343747649";
-const WHATSAPP_MESSAGE = encodeURIComponent("Hello! I'd like to order Stea Masala Tea.");
-const WHATSAPP_URL = `https://wa.me/${WHATSAPP_NUMBER}?text=${WHATSAPP_MESSAGE}`;
+const WHATSAPP_URL = `https://wa.me/${WHATSAPP_NUMBER}`;
 
-// Product images for slider
-const productImages = [
-  "/WhatsApp Image 2026-04-08 at 11.13.42 PM.jpeg",
-  "/WhatsApp Image 2026-04-08 at 11.13.42 PM (1).jpeg",
-  "/WhatsApp Image 2026-04-08 at 11.13.42 PM (2).jpeg",
-  "/Gemini_Generated_Image_uxe8ucuxe8ucuxe8.png",
-  "/Gemini_Generated_Image_y674oly674oly674.png",
+// Product catalogue
+const products = [
+  {
+    name: "Gold Patti",
+    category: "Gold Patti",
+    image: "/Products/GoldPatti/1.png",
+    price: "Rs. 340",
+    originalPrice: "Rs. 360",
+    size: "200g Pack",
+    description: "Rare golden-tipped leaves for a strong, full-bodied brew with a naturally sweet finish.",
+    tag: "Bestseller",
+  },
+  {
+    name: "Gold Patti",
+    category: "Gold Patti",
+    image: "/Products/GoldPatti/100gram.png",
+    price: "Rs. 190",
+    originalPrice: "Rs. 200",
+    size: "100g Pack",
+    description: "The same golden-tipped luxury in a handy 100g pack. Perfect for first-time tasters.",
+  },
+  {
+    name: "Caramel Tea",
+    category: "Flavoured Tea",
+    image: "/Products/Flavoured%20Tea/caramel.png",
+    price: "Rs. 299",
+    originalPrice: "Rs. 315",
+    size: "100g Pack",
+    description: "Rich, buttery caramel notes steeped into premium tea leaves for a warm, indulgent cup.",
+  },
+  {
+    name: "Elaichi Tea",
+    category: "Flavoured Tea",
+    image: "/Products/Flavoured%20Tea/elaichi.png",
+    price: "Rs. 299",
+    originalPrice: "Rs. 315",
+    size: "100g Pack",
+    description: "Fragrant green cardamom kissed into black tea for that classic desi chai aroma.",
+  },
+  {
+    name: "Blueberry Green Tea",
+    category: "Green Tea",
+    image: "/Products/green%20tea/blueberry.png",
+    price: "Rs. 299",
+    originalPrice: "Rs. 315",
+    size: "100g Pack",
+    description: "Antioxidant-rich green tea with juicy blueberry flavour and a gently sweet finish.",
+    tag: "New",
+  },
+  {
+    name: "Pina Colada Green Tea",
+    category: "Green Tea",
+    image: "/Products/green%20tea/pinacolada.png",
+    price: "Rs. 299",
+    originalPrice: "Rs. 315",
+    size: "100g Pack",
+    description: "Tropical pineapple and coconut blended with green tea for a breezy island sip.",
+    tag: "New",
+  },
+  {
+    name: "Strawberry Green Tea",
+    category: "Green Tea",
+    image: "/Products/green%20tea/strawberry.png",
+    price: "Rs. 299",
+    originalPrice: "Rs. 315",
+    size: "100g Pack",
+    description: "Sun-ripened strawberry notes over smooth green tea for a refreshingly fruity brew.",
+    tag: "New",
+  },
 ];
-
-function ProductImageSlider() {
-  const [currentIndex, setCurrentIndex] = useState(0);
-
-  useEffect(() => {
-    const timer = setInterval(() => {
-      setCurrentIndex((prev) => (prev + 1) % productImages.length);
-    }, 3000);
-    return () => clearInterval(timer);
-  }, []);
-
-  const goToSlide = (index: number) => setCurrentIndex(index);
-  const goPrev = () => setCurrentIndex((prev) => (prev - 1 + productImages.length) % productImages.length);
-  const goNext = () => setCurrentIndex((prev) => (prev + 1) % productImages.length);
-
-  return (
-    <div className="relative h-full w-full">
-      {productImages.map((src, index) => (
-        <div
-          key={src}
-          className={`absolute inset-0 transition-opacity duration-700 ${index === currentIndex ? "opacity-100 z-10" : "opacity-0 z-0"}`}
-        >
-          <Image src={src} alt={`Stea Masala Tea - View ${index + 1}`} fill className="object-contain p-4 sm:p-6" />
-        </div>
-      ))}
-      <div className="absolute bottom-4 sm:bottom-6 left-1/2 -translate-x-1/2 z-20 flex gap-2">
-        {productImages.map((_, index) => (
-          <button key={index} onClick={() => goToSlide(index)}
-            className={`h-2.5 rounded-full transition-all duration-300 ${index === currentIndex ? "bg-[#C62828] w-8" : "bg-[#1F140D]/30 w-2.5 hover:bg-[#1F140D]/50"}`}
-          />
-        ))}
-      </div>
-      <button onClick={goPrev} className="absolute left-2 sm:left-3 top-1/2 -translate-y-1/2 z-20 w-8 h-8 sm:w-10 sm:h-10 bg-white/80 rounded-full flex items-center justify-center shadow-md hover:bg-white transition-all hidden md:flex">
-        <svg xmlns="http://www.w3.org/2000/svg" className="w-4 h-4 sm:w-5 sm:h-5 text-[#1F140D]" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="m15 18-6-6 6-6"/></svg>
-      </button>
-      <button onClick={goNext} className="absolute right-2 sm:right-3 top-1/2 -translate-y-1/2 z-20 w-8 h-8 sm:w-10 sm:h-10 bg-white/80 rounded-full flex items-center justify-center shadow-md hover:bg-white transition-all hidden md:flex">
-        <svg xmlns="http://www.w3.org/2000/svg" className="w-4 h-4 sm:w-5 sm:h-5 text-[#1F140D]" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="m9 18 6-6-6-6"/></svg>
-      </button>
-    </div>
-  );
-}
 
 export default function Home() {
   const containerRef = useRef(null);
@@ -153,50 +173,57 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Product Showcase Section */}
+      {/* Products Section */}
       <section className="py-16 sm:py-24 lg:py-32 xl:py-24 px-4 sm:px-6 bg-[#Faf7f2] relative">
-        <div className="max-w-5xl mx-auto">
+        <div className="max-w-7xl mx-auto">
           <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeInUp} className="text-center mb-10 sm:mb-16 xl:mb-12">
-            <h2 className="text-2xl sm:text-3xl md:text-5xl xl:text-4xl font-playfair text-[#1F140D] mb-3 sm:mb-4 xl:mb-3">Shop Now</h2>
-            <p className="text-[#1F140D]/70 text-base sm:text-lg xl:text-base max-w-2xl mx-auto">Premium masala tea crafted with natural ingredients. Swipe through to see every angle.</p>
+            <h2 className="text-2xl sm:text-3xl md:text-5xl xl:text-4xl font-playfair text-[#1F140D] mb-3 sm:mb-4 xl:mb-3">Shop Our Products</h2>
+            <p className="text-[#1F140D]/70 text-base sm:text-lg xl:text-base max-w-2xl mx-auto">From classic masala to flavoured teas and gold patti — every pack crafted with natural ingredients.</p>
           </motion.div>
 
-          <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.1 }}
-            className="bg-white rounded-xl overflow-hidden shadow-xl">
-            <div className="grid grid-cols-1 md:grid-cols-2">
-              <div className="relative h-[300px] sm:h-[400px] md:h-[500px] xl:h-[420px] bg-[#f5f0eb]">
-                <ProductImageSlider />
-              </div>
-              <div className="p-6 sm:p-8 md:p-12 xl:p-8 flex flex-col justify-center">
-                <div className="inline-block py-1.5 px-4 mb-3 sm:mb-4 xl:mb-3 border border-[#D4A017]/30 rounded-full bg-[#D4A017]/10 text-[#D4A017] tracking-widest text-[10px] sm:text-xs xl:text-[10px] font-semibold uppercase w-fit">
-                  Our Signature Product
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 gap-6 sm:gap-8">
+            {products.map((product, idx) => (
+              <motion.div
+                key={`${product.category}-${product.image}-${idx}`}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-50px" }}
+                transition={{ delay: (idx % 3) * 0.12 }}
+                className="bg-white rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-shadow flex flex-col"
+              >
+                <div className="relative h-64 sm:h-72 xl:h-64 bg-[#f5f0eb] group">
+                  <Image src={product.image} alt={product.name} fill className="object-contain p-4 transition-transform duration-500 group-hover:scale-110" />
+                  <div className="absolute top-3 left-3 flex gap-2">
+                    {product.tag && (
+                      <span className="bg-[#25D366] text-white text-[10px] px-2.5 py-1 rounded-full font-semibold tracking-wide uppercase">{product.tag}</span>
+                    )}
+                  </div>
+                  <span className="absolute top-3 right-3 py-1 px-3 border border-[#D4A017]/30 rounded-full bg-[#D4A017]/10 text-[#D4A017] tracking-widest text-[9px] sm:text-[10px] font-semibold uppercase">
+                    {product.category}
+                  </span>
                 </div>
-                <h3 className="text-2xl sm:text-3xl md:text-4xl xl:text-3xl font-playfair text-[#1F140D] mb-2 sm:mb-3 xl:mb-2">Stea Masala Tea</h3>
-                <div className="flex items-center gap-2 sm:gap-3 xl:gap-2 mb-3 sm:mb-4 xl:mb-3 flex-wrap">
-                  <span className="text-2xl sm:text-3xl xl:text-2xl font-bold text-[#C62828]">Rs. 475</span>
-                  <span className="text-base sm:text-xl xl:text-base text-[#1F140D]/40 line-through">Rs. 500</span>
-                  <span className="bg-[#25D366] text-white text-xs px-2 py-1 rounded font-semibold">5% OFF</span>
+                <div className="p-5 sm:p-6 xl:p-5 flex flex-col flex-1">
+                  <h3 className="text-lg sm:text-xl xl:text-lg font-playfair text-[#1F140D] mb-1">{product.name}</h3>
+                  <p className="text-[#1F140D]/50 text-[11px] sm:text-xs mb-3">{product.size}</p>
+                  <div className="flex items-center gap-2 mb-3">
+                    <span className="text-xl sm:text-2xl xl:text-xl font-bold text-[#C62828]">{product.price}</span>
+                    <span className="text-sm text-[#1F140D]/40 line-through">{product.originalPrice}</span>
+                    <span className="bg-[#25D366] text-white text-[10px] px-1.5 py-0.5 rounded font-semibold">5% OFF</span>
+                  </div>
+                  <p className="text-[#1F140D]/70 text-xs leading-relaxed mb-4 sm:mb-5">{product.description}</p>
+                  <a
+                    href={`${WHATSAPP_URL}?text=${encodeURIComponent(`Hello! I'd like to order ${product.name} (${product.size}).`)}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="mt-auto inline-flex items-center justify-center gap-2 bg-gradient-to-r from-[#C62828] to-[#B71C1C] text-white py-2.5 px-4 rounded font-semibold tracking-wider uppercase text-[11px] hover:shadow-lg hover:-translate-y-0.5 transition-all"
+                  >
+                    <svg xmlns="http://www.w3.org/2000/svg" className="w-4 h-4" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+                    Order on WhatsApp
+                  </a>
                 </div>
-                <p className="text-[#1F140D]/50 text-xs sm:text-sm xl:text-xs mb-4 sm:mb-6 xl:mb-4">200g Pack</p>
-                <p className="text-[#1F140D]/70 text-xs sm:text-sm xl:text-xs leading-relaxed mb-4 sm:mb-6 xl:mb-4">
-                  Our flagship blend crafted with high-altitude Assam black tea, green cardamom, Ceylon cinnamon, star anise, saffron threads, cloves, and black pepper. Every pouch is precision-blended to deliver the perfect cup every time.
-                </p>
-                <div className="space-y-2 sm:space-y-3 xl:space-y-2 mb-6 sm:mb-8 xl:mb-6">
-                  {["100% Natural Ingredients", "Premium High-Altitude Tea Leaves", "Precision-Blended Recipe"].map((item, i) => (
-                    <div key={i} className="flex items-center gap-2 sm:gap-3 xl:gap-2">
-                      <svg xmlns="http://www.w3.org/2000/svg" className="w-4 h-4 sm:w-5 sm:h-5 xl:w-4 xl:h-4 text-[#25D366] flex-shrink-0" viewBox="0 0 24 24" fill="currentColor"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
-                      <span className="text-[#1F140D]/70 text-xs sm:text-sm xl:text-xs">{item}</span>
-                    </div>
-                  ))}
-                </div>
-                <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer"
-                  className="inline-flex items-center justify-center gap-2 sm:gap-3 xl:gap-2 bg-gradient-to-r from-[#C62828] to-[#B71C1C] text-white py-3 sm:py-4 xl:py-3 px-6 sm:px-8 xl:px-6 rounded font-semibold tracking-wider uppercase text-xs sm:text-sm xl:text-xs hover:shadow-lg hover:-translate-y-0.5 transition-all">
-                  <svg xmlns="http://www.w3.org/2000/svg" className="w-4 h-4 sm:w-5 sm:h-5 xl:w-4 xl:h-5" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
-                  Order Now on WhatsApp
-                </a>
-              </div>
-            </div>
-          </motion.div>
+              </motion.div>
+            ))}
+          </div>
         </div>
       </section>
 
