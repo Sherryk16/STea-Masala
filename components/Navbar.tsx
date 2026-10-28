@@ -42,7 +42,7 @@ export default function Navbar() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 h-16 sm:h-20 md:h-24 xl:h-20 flex items-center justify-between">
         {/* Logo */}
         <Link href="/" className="flex-shrink-0 z-50 flex items-center">
-          <div className="relative w-[100px] h-[40px] sm:w-[130px] sm:h-[50px] md:w-[160px] md:h-[60px] xl:w-[140px] xl:h-[52px]">
+          <div className="relative w-[130px] h-[52px] sm:w-[170px] sm:h-[68px] md:w-[200px] md:h-[78px] lg:w-[230px] lg:h-[90px] xl:w-[250px] xl:h-[96px]">
              <Image src="/newlogo.png" alt="Masala Logo" fill className="object-contain" />
           </div>
         </Link>
