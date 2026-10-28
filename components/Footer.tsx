@@ -17,7 +17,7 @@ export default function Footer() {
           <div className="lg:col-span-2">
             <Link href="/" className="inline-block mb-4 sm:mb-6 xl:mb-4">
               <div className="relative w-[120px] h-[45px] sm:w-[160px] sm:h-[60px] xl:w-[120px] xl:h-[45px]">
-                <Image src="/logo.png" alt="Masala Tea Logo" fill className="object-contain" />
+                <Image src="/newlogo.png" alt="Masala Tea Logo" fill className="object-contain" />
               </div>
             </Link>
             <p className="text-white/70 leading-relaxed max-w-sm mb-6 sm:mb-8 xl:mb-5 text-sm sm:text-base xl:text-xs">

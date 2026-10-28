@@ -103,6 +103,47 @@ export default function HomeContent({ products }: { products: ProductCard[] }) {
         </div>
       </section>
 
+      {/* Offer Section */}
+      <section className="py-10 sm:py-16 px-4 sm:px-6 bg-[#Faf7f2] relative">
+        <div className="max-w-6xl mx-auto">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+            className="relative rounded-lg overflow-hidden shadow-2xl group"
+          >
+            <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer" className="block">
+              <Image
+                src="/offer.png"
+                alt="LOUNGE PRESENTS NEW LAUNCH — 1 KG GOLDEN PATTI PACK! Buy 1 KG of ST Lounge Golden Patti and get a FREE PAIR OF SILVER EARRINGS! Rich Taste, Beautiful Gift! LIMITED TIME OFFER — SHOP NOW!"
+                width={1024}
+                height={153}
+                className="w-full h-auto transition-transform duration-500 group-hover:scale-[1.02]"
+                priority
+              />
+            </a>
+          </motion.div>
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+            className="text-center mt-6 sm:mt-8"
+          >
+            <a
+              href={`${WHATSAPP_URL}?text=${encodeURIComponent("Hello! I'd like to avail the 1 KG Golden Patti offer - Buy 1 KG and get FREE pair of silver earrings!")}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 sm:gap-3 bg-gradient-to-r from-[#D4A017] to-[#B8860B] text-white px-6 sm:px-8 py-3 sm:py-3.5 rounded shadow-[0_0_30px_rgba(212,160,23,0.4)] hover:shadow-[0_0_40px_rgba(212,160,23,0.6)] hover:-translate-y-1 transition-all text-xs sm:text-sm font-bold tracking-widest uppercase"
+            >
+              Claim Offer on WhatsApp
+              <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="m9 18 6-6-6-6"/></svg>
+            </a>
+          </motion.div>
+        </div>
+      </section>
+
       {/* Products Section */}
       <section className="py-16 sm:py-24 lg:py-32 xl:py-24 px-4 sm:px-6 bg-[#Faf7f2] relative">
         <div className="max-w-7xl mx-auto">

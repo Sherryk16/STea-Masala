@@ -29,7 +29,7 @@ export default async function AdminLoginPage({
         <div className="text-center mb-8">
           <Link href="/" className="inline-block mb-6">
             <div className="relative w-[150px] h-[56px]">
-              <Image src="/logo.png" alt="Stea Masala" fill className="object-contain" />
+              <Image src="/newlogo.png" alt="Stea Masala" fill className="object-contain" />
             </div>
           </Link>
           <h1 className="font-playfair text-3xl sm:text-4xl mb-3">Admin Access</h1>

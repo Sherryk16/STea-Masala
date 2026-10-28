@@ -43,7 +43,7 @@ export default function Navbar() {
         {/* Logo */}
         <Link href="/" className="flex-shrink-0 z-50 flex items-center">
           <div className="relative w-[100px] h-[40px] sm:w-[130px] sm:h-[50px] md:w-[160px] md:h-[60px] xl:w-[140px] xl:h-[52px]">
-             <Image src="/logo.png" alt="Masala Logo" fill className="object-contain" />
+             <Image src="/newlogo.png" alt="Masala Logo" fill className="object-contain" />
           </div>
         </Link>
 

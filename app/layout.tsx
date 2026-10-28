@@ -108,8 +108,8 @@ export const metadata: Metadata = {
     },
   },
   icons: {
-    icon: "/logo.png",
-    apple: "/logo.png",
+    icon: "/newlogo.png",
+    apple: "/newlogo.png",
   },
   verification: {
     google: "M0eVxAIT-xRdserE-L3XBiQ_KqjYZtZ8vJZQNYnSiWQ",

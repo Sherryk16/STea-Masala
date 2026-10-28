@@ -21,7 +21,7 @@ export default async function AdminDashboardLayout({
           <div className="flex items-center gap-4 sm:gap-6 min-w-0">
             <Link href="/admin" className="shrink-0">
               <div className="relative w-[110px] h-[40px]">
-                <Image src="/logo.png" alt="Stea Masala" fill className="object-contain" />
+                <Image src="/newlogo.png" alt="Stea Masala" fill className="object-contain" />
               </div>
             </Link>
             <AdminNav />
