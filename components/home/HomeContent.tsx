@@ -104,65 +104,56 @@ export default function HomeContent({ products }: { products: ProductCard[] }) {
       </section>
 
       {/* Offer Section */}
-      <section className="py-12 sm:py-16 lg:py-20 px-4 sm:px-6 bg-[#Faf7f2] relative">
-        <div className="max-w-7xl mx-auto">
+      <section className="py-12 sm:py-16 lg:py-20 xl:py-16 px-4 sm:px-6 bg-[#Faf7f2] relative">
+        <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8 sm:gap-12 lg:gap-16 xl:gap-12 items-center">
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
-            className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center bg-gradient-to-br from-[#1a0a00] via-[#2a1400] to-[#1a0a00] rounded-2xl overflow-hidden shadow-2xl border border-[#D4A017]/20"
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-100px" }}
+            variants={fadeInUp}
+            className="relative h-[320px] sm:h-[380px] lg:h-[450px] xl:h-[380px] rounded-sm overflow-hidden shadow-2xl"
           >
-            {/* Text Content */}
-            <div className="p-6 sm:p-10 lg:p-12 xl:p-14 order-2 lg:order-1">
-              <motion.div
-                initial={{ opacity: 0, x: -20 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: 0.2 }}
-              >
-                <div className="inline-flex items-center gap-2 px-4 py-1.5 mb-6 border border-[#D4A017]/40 rounded-full bg-[#D4A017]/10">
-                  <span className="text-[#D4A017] text-[10px] sm:text-xs font-bold tracking-[0.3em] uppercase">Lounge Presents</span>
-                </div>
-                <h2 className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-playfair font-bold text-white mb-4 leading-tight">
-                  New Launch
-                  <span className="block text-transparent bg-clip-text bg-gradient-to-r from-[#D4A017] to-[#FFB800] mt-2">
-                    1 KG Golden Patti
-                  </span>
-                </h2>
-                <p className="text-white/90 text-base sm:text-lg lg:text-xl mb-6 leading-relaxed">
-                  Buy <span className="text-[#D4A017] font-semibold">1 KG of ST Lounge Golden Patti</span> and get a{" "}
-                  <span className="text-[#D4A017] font-semibold">FREE PAIR OF SILVER EARRINGS</span>!
-                </p>
-                <p className="text-white/70 text-sm sm:text-base mb-2">Rich Taste • Beautiful Gift</p>
-                <p className="text-[#FF6F00] text-sm sm:text-base font-bold tracking-widest uppercase mb-8">
-                  ⏳ Limited Time Offer
-                </p>
-                <a
-                  href={`${WHATSAPP_URL}?text=${encodeURIComponent("Hello! I'd like to avail the 1 KG Golden Patti offer - Buy 1 KG of ST Lounge Golden Patti and get a FREE pair of silver earrings!")}`}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 sm:gap-3 bg-gradient-to-r from-[#C62828] to-[#B71C1C] text-white px-6 sm:px-8 lg:px-10 py-3 sm:py-4 rounded shadow-[0_0_40px_rgba(198,40,40,0.5)] hover:shadow-[0_0_60px_rgba(198,40,40,0.7)] hover:-translate-y-1 transition-all text-xs sm:text-sm font-bold tracking-widest uppercase group"
-                >
-                  Shop Now
-                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="group-hover:translate-x-1 transition-transform"><path d="m9 18 6-6-6-6"/></svg>
-                </a>
-              </motion.div>
-            </div>
-
-            {/* Image Content */}
-            <div className="relative h-[300px] sm:h-[400px] lg:h-full min-h-[400px] order-1 lg:order-2">
-              <a href={`${WHATSAPP_URL}?text=${encodeURIComponent("Hello! I'd like to avail the 1 KG Golden Patti offer - Buy 1 KG of ST Lounge Golden Patti and get a FREE pair of silver earrings!")}`} target="_blank" rel="noopener noreferrer" className="block h-full w-full">
-                <Image
-                  src="/offer.png"
-                  alt="ST Lounge Golden Patti 1 KG Pack with Free Silver Earrings"
-                  fill
-                  className="object-cover object-center transition-transform duration-700 hover:scale-105"
-                  priority
-                />
-                <div className="absolute inset-0 bg-gradient-to-t lg:bg-gradient-to-l from-[#1a0a00] via-transparent to-transparent opacity-60 lg:opacity-40" />
-              </a>
-            </div>
+            <a
+              href={`${WHATSAPP_URL}?text=${encodeURIComponent("Hello! I'd like to avail the 1 KG Golden Patti offer - Buy 1 KG of ST Lounge Golden Patti and get a FREE pair of silver earrings!")}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="block w-full h-full"
+            >
+              <Image
+                src="/offer.png"
+                alt="ST Lounge Golden Patti 1 KG Pack with Free Silver Earrings"
+                fill
+                className="object-contain bg-[#1a0a00] p-4 sm:p-6 transition-transform duration-500 hover:scale-105"
+              />
+            </a>
+          </motion.div>
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-100px" }}
+            variants={fadeInUp}
+          >
+            <h2 className="text-[#D4A017] tracking-widest uppercase text-xs sm:text-sm xl:text-xs font-semibold mb-2 sm:mb-3 xl:mb-2">
+              Lounge Presents
+            </h2>
+            <h3 className="text-2xl sm:text-3xl md:text-4xl xl:text-3xl font-playfair text-[#1F140D] mb-4 sm:mb-6 xl:mb-4 leading-tight">
+              New Launch — 1 KG Golden Patti Pack
+            </h3>
+            <p className="text-[#1F140D]/70 text-base sm:text-lg xl:text-base leading-relaxed mb-4 sm:mb-6 xl:mb-4">
+              Buy 1 KG of ST Lounge Golden Patti and get a <span className="text-[#C62828] font-semibold">FREE PAIR OF SILVER EARRINGS</span>! 
+            </p>
+            <p className="text-[#1F140D]/70 text-base sm:text-lg xl:text-base leading-relaxed mb-6 sm:mb-8 xl:mb-6">
+              Rich Taste, Beautiful Gift! Limited time offer — don&apos;t miss out.
+            </p>
+            <a
+              href={`${WHATSAPP_URL}?text=${encodeURIComponent("Hello! I'd like to avail the 1 KG Golden Patti offer - Buy 1 KG of ST Lounge Golden Patti and get a FREE pair of silver earrings!")}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="border-b-2 border-[#C62828] text-[#1F140D] font-semibold pb-1 hover:text-[#C62828] transition-colors uppercase tracking-wider text-xs sm:text-sm xl:text-xs inline-flex items-center gap-2"
+            >
+              Shop Now on WhatsApp
+              <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="m9 18 6-6-6-6"/></svg>
+            </a>
           </motion.div>
         </div>
       </section>
