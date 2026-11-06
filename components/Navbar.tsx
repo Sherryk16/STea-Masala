@@ -6,10 +6,7 @@ import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X, ShoppingBag } from "lucide-react";
 
-// WhatsApp number - update this if needed (use international format without +)
-const WHATSAPP_NUMBER = "923343747649";
-const WHATSAPP_MESSAGE = encodeURIComponent("Hello! I'd like to order Stea Masala Tea.");
-const WHATSAPP_URL = `https://wa.me/${WHATSAPP_NUMBER}?text=${WHATSAPP_MESSAGE}`;
+import { SITE_NAME, whatsappUrl } from "@/lib/site";
 
 export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -20,11 +17,21 @@ export default function Navbar() {
       setIsScrolled(window.scrollY > 50);
     };
     window.addEventListener("scroll", handleScroll);
+    handleScroll();
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  useEffect(() => {
+    document.body.style.overflow = isMobileMenuOpen ? "hidden" : "";
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [isMobileMenuOpen]);
+
   const navLinks = [
     { name: "Home", href: "/" },
+    { name: "Collection", href: "/#products" },
+    { name: "Price List", href: "/#price-list" },
     { name: "About", href: "/about" },
     { name: "Blog", href: "/blog" },
     { name: "Contact", href: "/contact" },
@@ -35,59 +42,94 @@ export default function Navbar() {
       initial={{ y: -100 }}
       animate={{ y: 0 }}
       transition={{ duration: 0.6, ease: "easeOut" }}
-      className={`fixed top-0 w-full z-50 transition-colors duration-300 ${
-        isScrolled ? "bg-[#1a0a00]/95 backdrop-blur-md border-b border-[#D4A017]/10" : "bg-transparent"
+      className={`fixed top-0 z-50 w-full transition-colors duration-300 ${
+        isScrolled || isMobileMenuOpen
+          ? "border-b border-[#D4A017]/15 bg-[#1a0a00]/95 backdrop-blur-md"
+          : "bg-transparent"
       }`}
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 h-16 sm:h-20 md:h-24 xl:h-20 flex items-center justify-between">
+      <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:h-20 sm:px-6">
         {/* Logo */}
-        <Link href="/" className="flex-shrink-0 z-50 flex items-center">
-          <div className="relative w-[130px] h-[52px] sm:w-[170px] sm:h-[68px] md:w-[200px] md:h-[78px] lg:w-[230px] lg:h-[90px] xl:w-[250px] xl:h-[96px]">
-             <Image src="/newlogo.png" alt="Masala Logo" fill className="object-contain" />
+        <Link href="/" className="z-50 flex flex-shrink-0 items-center" aria-label={`${SITE_NAME} home`}>
+          <div className="relative h-[50px] w-[128px] sm:h-[64px] sm:w-[165px] lg:w-[190px]">
+            <Image
+              src="/newlogo.png"
+              alt={`${SITE_NAME} logo`}
+              fill
+              priority
+              sizes="190px"
+              className="object-contain"
+            />
           </div>
         </Link>
 
-        {/* Desktop Nav */}
-        <nav className="hidden md:flex space-x-8 lg:space-x-12 xl:space-x-10 items-center">
+        {/* Desktop nav */}
+        <nav className="hidden items-center gap-5 md:flex lg:gap-7 xl:gap-8">
           {navLinks.map((link) => (
-            <Link key={link.name} href={link.href}
-              className={`text-sm xl:text-[11px] tracking-widest uppercase transition-colors ${isScrolled ? "text-white/80 hover:text-white" : "text-white/80 hover:text-white"}`}>
+            <Link
+              key={link.name}
+              href={link.href}
+              className="text-[11px] font-medium uppercase tracking-[0.17em] text-white/75 transition-colors hover:text-[#D4A017] lg:text-xs"
+            >
               {link.name}
             </Link>
           ))}
-          <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer"
-            className="flex items-center gap-2 bg-gradient-to-r from-[#C62828] to-[#B71C1C] hover:from-[#B71C1C] hover:to-[#A01515] text-white px-4 lg:px-5 xl:px-4 py-2 lg:py-2.5 xl:py-2 rounded-sm text-xs lg:text-sm xl:text-[11px] tracking-widest uppercase transition-all shadow-[0_0_15px_rgba(198,40,40,0.3)]">
-            <ShoppingBag size={16} />
+          <a
+            href={whatsappUrl()}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="ml-1 flex items-center gap-2 rounded-sm bg-gradient-to-r from-[#C62828] to-[#B71C1C] px-4 py-2.5 text-[10px] font-bold uppercase tracking-[0.16em] text-white shadow-[0_10px_24px_-14px_rgba(198,40,40,0.9)] transition-transform hover:-translate-y-0.5 lg:px-5 lg:text-[11px]"
+          >
+            <ShoppingBag size={15} />
             Order Now
           </a>
         </nav>
 
-        {/* Mobile Toggle */}
-        <button className="md:hidden z-50 text-white" onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}>
-          {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
+        {/* Mobile toggle */}
+        <button
+          type="button"
+          aria-label={isMobileMenuOpen ? "Close menu" : "Open menu"}
+          aria-expanded={isMobileMenuOpen}
+          className="z-50 rounded-full border border-white/15 bg-white/5 p-2 text-white md:hidden"
+          onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+        >
+          {isMobileMenuOpen ? <X size={22} /> : <Menu size={22} />}
         </button>
       </div>
 
-      {/* Mobile Menu */}
+      {/* Mobile menu */}
       <AnimatePresence>
         {isMobileMenuOpen && (
           <motion.div
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
-            className="absolute top-0 left-0 w-full h-screen bg-[#1a0a00] flex flex-col items-center justify-center space-y-6 sm:space-y-8 z-40"
+            className="absolute left-0 top-0 z-40 flex h-screen w-full flex-col items-center justify-center space-y-6 bg-[#1a0a00] px-6"
           >
+            <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_20%,rgba(198,40,40,0.12),transparent_45%)]" />
             {navLinks.map((link) => (
-              <Link key={link.name} href={link.href} onClick={() => setIsMobileMenuOpen(false)}
-                className="text-xl sm:text-2xl font-playfair text-[#D4A017] hover:text-white transition-colors">
+              <Link
+                key={link.name}
+                href={link.href}
+                onClick={() => setIsMobileMenuOpen(false)}
+                className="relative z-10 font-playfair text-2xl text-[#D4A017] transition-colors hover:text-white"
+              >
                 {link.name}
               </Link>
             ))}
-            <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer" onClick={() => setIsMobileMenuOpen(false)}
-              className="mt-4 sm:mt-8 flex items-center gap-2 bg-gradient-to-r from-[#C62828] to-[#B71C1C] text-white px-6 sm:px-8 py-3 sm:py-3 rounded-sm text-base sm:text-lg tracking-widest uppercase">
+            <a
+              href={whatsappUrl()}
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={() => setIsMobileMenuOpen(false)}
+              className="relative z-10 mt-4 flex items-center gap-2 rounded-sm bg-gradient-to-r from-[#C62828] to-[#B71C1C] px-7 py-3 text-sm font-bold uppercase tracking-[0.16em] text-white"
+            >
               <ShoppingBag size={18} />
               Order Now
             </a>
+            <p className="relative z-10 text-[10px] uppercase tracking-[0.2em] text-white/35">
+              {SITE_NAME} · Premium tea collection
+            </p>
           </motion.div>
         )}
       </AnimatePresence>

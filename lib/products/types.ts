@@ -35,18 +35,29 @@ export type ProductInput = {
 };
 
 /**
- * Display shape consumed by the public product cards. Prices are pre-formatted
- * so the same helper can feed both the database rows and the bundled fallback
- * catalogue.
+ * One purchasable weight of a blend. `price` is `null` when the price still
+ * needs to be confirmed with the ST Lounge team.
+ */
+export type ProductVariant = {
+  weight: string;
+  price: number | null;
+};
+
+/**
+ * Display shape consumed by the public product cards. Prices are stored as
+ * numbers so the client can format the selected weight and build an accurate
+ * WhatsApp message without re-parsing display strings.
  */
 export type ProductCard = {
   name: string;
   category: string;
   image: string;
-  price: string;
-  originalPrice?: string;
-  size: string;
   description: string;
+  variants: ProductVariant[];
   tag?: string;
+  /** Legacy single-price fields, still populated for admin-managed products. */
+  price?: string;
+  originalPrice?: string;
+  size?: string;
   discount?: string;
 };

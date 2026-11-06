@@ -33,7 +33,7 @@ export default function About() {
         >
           <span className="text-[#D4A017] tracking-widest text-xs font-semibold uppercase mb-4 xl:mb-3 block">Our Heritage</span>
           <h1 className="text-3xl sm:text-4xl md:text-5xl xl:text-4xl font-playfair font-bold text-white mb-4 sm:mb-6 xl:mb-4 leading-tight px-2">
-             The Story of Stea Masala
+             The Story of ST Lounge
           </h1>
           <p className="text-white/70 max-w-2xl mx-auto text-base sm:text-lg xl:text-base font-light px-4">
              Born from a desire to preserve the rich, complex history of traditional tea making, while presenting it in a form fit for the modern connoisseur.
@@ -79,7 +79,7 @@ export default function About() {
           >
             <div className="text-center mb-8 sm:mb-12 xl:mb-10">
               <span className="text-[#D4A017] tracking-widest text-xs font-semibold uppercase">Meet the Founder</span>
-              <h2 className="font-playfair text-2xl sm:text-3xl md:text-4xl xl:text-3xl text-[#1F140D] mt-3">The Heart Behind Stea Masala</h2>
+              <h2 className="font-playfair text-2xl sm:text-3xl md:text-4xl xl:text-3xl text-[#1F140D] mt-3">The Heart Behind ST Lounge</h2>
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8 sm:gap-12 lg:gap-16 xl:gap-12 items-center">
@@ -93,7 +93,7 @@ export default function About() {
               >
                 <img
                   src="/founder.png"
-                  alt="Sadaf - Founder of Stea Masala"
+                  alt="Sadaf - Founder of ST Lounge"
                   className="h-full w-auto object-cover object-[center_0%]"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-[#1a0a00]/30 to-transparent" />
@@ -119,17 +119,17 @@ export default function About() {
                 </p>
 
                 <p className="text-[#1F140D]/80 text-base sm:text-lg xl:text-base leading-relaxed">
-                  So I made a choice. I left it all behind to create something real. In 2024, Stea Masala was born—not as a business, but as a promise. A promise that every blend would be homemade with care, every ingredient sourced with intention, and every cup would carry the depth of a legacy worth preserving.
+                  So I made a choice. I left it all behind to create something real. In 2024, ST Lounge was born—not as a business, but as a promise. A promise that every blend would be homemade with care, every ingredient sourced with intention, and every cup would carry the depth of a legacy worth preserving.
                 </p>
 
                 <p className="text-[#1F140D]/80 text-base sm:text-lg xl:text-base leading-relaxed">
-                  This isn't just tea. It's a movement. I built Stea Masala to prove that women don't need permission to rewrite their stories. When we lift each other up, invest in each other's dreams, and refuse to settle—there's no limit to what we can build.
+                  This isn’t just tea. It’s a movement. I built ST Lounge to prove that women don’t need permission to rewrite their stories. When we lift each other up, invest in each other’s dreams, and refuse to settle—there’s no limit to what we can build.
                 </p>
 
                 <div className="pt-4 sm:pt-6 xl:pt-4">
                   <div className="bg-[#D4A017]/10 border-l-4 border-[#D4A017] p-4 sm:p-5 xl:p-4 rounded-r-lg">
                     <p className="text-[#1F140D]/90 italic text-sm sm:text-base xl:text-sm font-medium">
-                      "I traded financial returns for flavor, and I've never looked back. The best ventures aren't funded by capital—they're fueled by conviction."
+                      “I traded financial returns for flavor, and I’ve never looked back. The best ventures aren’t funded by capital—they’re fueled by conviction.”
                     </p>
                   </div>
                 </div>
@@ -153,10 +153,10 @@ export default function About() {
         <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeInUp} className="max-w-none text-[#1F140D]/80">
           <h2 className="font-playfair text-2xl sm:text-3xl md:text-4xl xl:text-3xl text-[#1F140D] mb-4 sm:mb-8 xl:mb-5">The Philosophy</h2>
           <p className="mb-4 sm:mb-6 xl:mb-4 leading-relaxed text-sm sm:text-base xl:text-sm">
-            At Stea Masala, we believe that tea is never just a beverage. It is a moment of reflection, a bridge between generations, and a testament to the earth's natural bounties. Our journey began with a single question: <i>How do we capture the true essence of a time-honored masala chai?</i>
+            At ST Lounge, we believe that tea is never just a beverage. It is a moment of reflection, a bridge between generations, and a testament to the earth’s natural bounties. Our journey began with a single question: <i>How do we capture the true essence of a time-honored masala chai?</i>
           </p>
           <p className="mb-8 sm:mb-12 xl:mb-8 leading-relaxed text-sm sm:text-base xl:text-sm">
-            The answer lay not in mass production, but in the meticulous craft of balancing ingredients. We scoured the finest estates and spice markets to source our core elements: Cardamom from Kerala, Cinnamon from Ceylon, and pure Saffron threads. Every pouch of Stea Masala is a composed symphony, ensuring that every grain serves a purpose.
+            The answer lay not in mass production, but in the meticulous craft of balancing ingredients. We scoured the finest estates and spice markets to source our core elements: Cardamom from Kerala, Cinnamon from Ceylon, and pure Saffron threads. Every pouch of ST Lounge is a composed symphony, ensuring that every grain serves a purpose.
           </p>
 
           <div className="relative bg-[#1a0a00] text-center py-10 sm:py-16 xl:py-12 px-4 sm:px-8 xl:px-6 rounded-sm shadow-2xl my-10 sm:my-16 xl:my-12 overflow-hidden">
@@ -166,7 +166,7 @@ export default function About() {
                className="absolute inset-0 w-full h-full object-cover opacity-20"
              />
              <div className="relative z-10">
-               <h3 className="font-playfair text-xl sm:text-2xl md:text-3xl xl:text-2xl font-bold text-[#D4A017] mb-2 sm:mb-4 xl:mb-2">"Nature's touch in every sip"</h3>
+               <h3 className="font-playfair text-xl sm:text-2xl md:text-3xl xl:text-2xl font-bold text-[#D4A017] mb-2 sm:mb-4 xl:mb-2">“Nature’s touch in every sip”</h3>
                <p className="text-white/70 tracking-widest uppercase text-xs">Our Promise</p>
              </div>
           </div>
@@ -176,7 +176,7 @@ export default function About() {
             What makes our single proprietary blend unique is the exact grammage measurement used during processing. We do not believe in random assortments. We employ a precision-based blending technique that locks in the essential oils of the spices along with the tannins of the high-altitude Assam black tea.
           </p>
           <p className="mb-6 xl:mb-5 leading-relaxed text-sm sm:text-base xl:text-sm">
-            When you open a pouch of our "Time-Honored" mix, you aren't just greeted by an aroma—you are greeted by history. The rich reds, the golden hues, the unmistakable scent of true Indian masala tea.
+            When you open a pouch of our “Time-Honored” mix, you aren’t just greeted by an aroma—you are greeted by history. The rich reds, the golden hues, the unmistakable scent of true Indian masala tea.
           </p>
         </motion.div>
       </section>

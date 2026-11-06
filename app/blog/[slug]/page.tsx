@@ -97,7 +97,7 @@ export default async function BlogPostPage({
     author: { "@type": "Person", name: post.author },
     publisher: {
       "@type": "Organization",
-      name: "Stea Masala",
+      name: "ST Lounge",
       url: SITE_URL,
     },
     mainEntityOfPage: { "@type": "WebPage", "@id": url },

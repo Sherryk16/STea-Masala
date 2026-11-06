@@ -12,14 +12,15 @@ export async function GET() {
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'center',
-          backgroundColor: '#1a0a00',
+          background: 'linear-gradient(135deg, #1a0a00, #2d1810)',
           borderRadius: '50%',
         }}
       >
         <div
           style={{
-            fontSize: 80,
+            fontSize: 13,
             fontWeight: 'bold',
+            letterSpacing: 1,
             background: 'linear-gradient(135deg, #D4A017, #FF6F00)',
             backgroundClip: 'text',
             WebkitBackgroundClip: 'text',
@@ -27,7 +28,7 @@ export async function GET() {
             color: 'transparent',
           }}
         >
-          SM
+          ST
         </div>
       </div>
     ),

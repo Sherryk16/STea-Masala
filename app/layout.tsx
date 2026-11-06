@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Inter, Playfair_Display } from "next/font/google";
 import "./globals.css";
 import WhatsAppButton from "@/components/WhatsAppButton";
+import { SITE_NAME, SITE_TAGLINE, SITE_URL } from "@/lib/site";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -15,75 +16,60 @@ const playfair = Playfair_Display({
 
 export const metadata: Metadata = {
   title: {
-    default: "Stea Masala | Premium Masala Tea – Shop Online in Pakistan",
-    template: "%s | Stea Masala Tea",
+    default: "ST Lounge | Premium Tea Collection – Golden Patti, Flavoured & Green Teas",
+    template: `%s | ${SITE_NAME}`,
   },
   description:
-    "Stea Masala – Pakistan's premium masala tea blend crafted with natural spices: cardamom, cinnamon, saffron & high-altitude Assam black tea. Order online and experience the soul of tradition in every cup. Free delivery across Pakistan.",
+    "ST Lounge – a world of tea & flavours. Shop premium Golden Patti, caramel, elaichi, shahi mixture, Kashmiri shahi, asli masala and refreshing blueberry, strawberry and pina colada green teas. Order online in Pakistan.",
   keywords: [
+    "ST Lounge",
+    "ST Lounge tea",
+    "Golden Patti",
+    "golden patti tea",
+    "premium tea Pakistan",
+    "flavoured tea",
+    "green tea Pakistan",
+    "caramel tea",
+    "elaichi tea",
+    "shahi mixture tea",
+    "Kashmiri shahi tea",
+    "asli masala",
     "masala tea",
     "masala chai",
-    "chai tea",
-    "chai tea leaves",
-    "masala chai recipe",
-    "flavoured tea",
-    "flavor tea",
-    "tea masala",
-    "spiced tea",
-    "masala chai Pakistan",
-    "chai masala",
-    "premium tea",
-    "Stea Masala",
-    "Stea Masala",
-    "masala tea Pakistan",
-    "order tea online",
-    "cardamom tea",
-    "saffron tea",
-    "Assam black tea",
-    "chai blend",
+    "blueberry green tea",
+    "strawberry green tea",
+    "pina colada green tea",
+    "buy tea online Pakistan",
     "tea delivery Pakistan",
-    "best masala tea",
-    "authentic chai",
-    "homemade masala chai",
-    "traditional chai",
-    "indian masala tea",
-    "spiced chai",
-    "herbal tea Pakistan",
-    "organic masala tea",
-    "chai tea online",
-    "buy masala tea",
-    "tea leaves Pakistan",
-    "masala chai blend",
-    "premium chai tea",
+    "premium tea collection",
     "steamasala",
     "stea masala tea",
     "tea brand Pakistan",
-    "female founded tea brand",
   ],
-  authors: [{ name: "Stea Masala" }],
-  creator: "Stea Masala",
-  publisher: "Stea Masala",
+  authors: [{ name: SITE_NAME }],
+  creator: SITE_NAME,
+  publisher: SITE_NAME,
   formatDetection: {
     email: false,
     address: false,
     telephone: false,
   },
-  metadataBase: new URL("https://steamasala.com"),
+  metadataBase: new URL(SITE_URL),
   alternates: {
     canonical: "/",
   },
   openGraph: {
-    title: "Stea Masala | Premium Masala Tea – Shop Online in Pakistan",
+    title: "ST Lounge | Premium Tea Collection – Shop Online in Pakistan",
     description:
-      "Pakistan's premium masala tea blend crafted with natural spices: cardamom, cinnamon, saffron & high-altitude Assam black tea. Order online now.",
-    url: "https://steamasala.com",
-    siteName: "Stea Masala",
+      "Discover the rich taste of premium tea leaves and delightful tea blends. Golden Patti, traditional flavours and refreshing green teas — order directly on WhatsApp.",
+    url: SITE_URL,
+    siteName: SITE_NAME,
     images: [
       {
-        url: "https://steamasala.com/og-image.png",
+        url: `${SITE_URL}/og-image.png`,
         width: 1200,
         height: 630,
-        alt: "Stea Masala – Premium Masala Tea",
+        alt: `${SITE_NAME} – Premium Tea Collection`,
       },
     ],
     locale: "en_PK",
@@ -91,9 +77,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Stea Masala | Premium Masala Tea",
+    title: `ST Lounge | ${SITE_TAGLINE}`,
     description:
-      "Pakistan's premium masala tea blend crafted with natural spices. Order online now.",
+      "Premium teas, traditional flavours and refreshing green blends. Explore the ST Lounge collection and order on WhatsApp.",
     images: ["/og-image.png"],
   },
   robots: {
@@ -130,40 +116,69 @@ export default function RootLayout({
       className={`${inter.variable} ${playfair.variable} h-full antialiased`}
     >
       <head>
-        <link rel="canonical" href="https://steamasala.com" />
+        <link rel="canonical" href={SITE_URL} />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
             __html: JSON.stringify({
               "@context": "https://schema.org",
-              "@type": "Recipe",
-              "name": "Stea Masala Chai Recipe",
-              "description": "Traditional homemade masala chai recipe by Stea Masala - Pakistan's premium masala tea blend crafted with natural spices: cardamom, cinnamon, saffron & high-altitude Assam black tea.",
-              "author": {
-                "@type": "Person",
-                "name": "Sadaf",
-                "description": "Former Standard Chartered banker turned tea entrepreneur, founder of Stea Masala",
-              },
-              "datePublished": "2024-01-01",
-              "prepTime": "PT5M",
-              "cookTime": "PT5M",
-              "totalTime": "PT10M",
-              "recipeYield": "1 cup",
-              "recipeCategory": "Beverage",
-              "recipeCuisine": "Pakistani",
-              "keywords": "masala chai, chai tea, masala tea, chai recipe, spiced tea, tea leaves",
-              "recipeIngredient": [
-                "1 tsp Stea Masala tea blend",
-                "1 cup water",
-                "1 cup milk",
-                "sugar to taste",
-              ],
-              "recipeInstructions": [
-                { "@type": "HowToStep", "name": "Pour milk and water", "text": "Pour milk into a pan and add water." },
-                { "@type": "HowToStep", "name": "Boil", "text": "Bring it to a boil on medium heat." },
-                { "@type": "HowToStep", "name": "Add masala tea", "text": "Add 1 teaspoon masala tea leaves." },
-                { "@type": "HowToStep", "name": "Simmer", "text": "Let it boil for 2–3 minutes until the flavor develops." },
-                { "@type": "HowToStep", "name": "Strain and serve", "text": "Strain into a cup and serve hot." },
+              "@graph": [
+                {
+                  "@type": "Organization",
+                  "@id": `${SITE_URL}/#organization`,
+                  name: SITE_NAME,
+                  alternateName: ["Stea Masala", "ST Lounge Tea"],
+                  url: SITE_URL,
+                  logo: `${SITE_URL}/newlogo.png`,
+                  description:
+                    "ST Lounge is a premium tea collection featuring Golden Patti, traditional flavoured teas and refreshing green tea blends.",
+                  sameAs: [
+                    "https://www.instagram.com/steamasala_official",
+                    "https://www.tiktok.com/@steamasala",
+                    "https://www.facebook.com/share/1BV2QGEcsR/",
+                  ],
+                  contactPoint: {
+                    "@type": "ContactPoint",
+                    telephone: "+92-334-3747649",
+                    contactType: "sales",
+                    areaServed: "PK",
+                    availableLanguage: ["English", "Urdu"],
+                  },
+                },
+                {
+                  "@type": "Recipe",
+                  name: "ST Lounge Traditional Chai Recipe",
+                  description:
+                    "A traditional homemade chai recipe using ST Lounge premium tea leaves and whole spices.",
+                  author: {
+                    "@type": "Person",
+                    name: "Sadaf",
+                    description:
+                      "Founder of ST Lounge, formerly a Standard Chartered banker turned tea entrepreneur",
+                  },
+                  datePublished: "2024-01-01",
+                  prepTime: "PT5M",
+                  cookTime: "PT5M",
+                  totalTime: "PT10M",
+                  recipeYield: "1 cup",
+                  recipeCategory: "Beverage",
+                  recipeCuisine: "Pakistani",
+                  keywords:
+                    "masala chai, chai tea, ST Lounge tea, golden patti, spiced tea, tea leaves",
+                  recipeIngredient: [
+                    "1 tsp ST Lounge tea leaves",
+                    "1 cup water",
+                    "1 cup milk",
+                    "sugar to taste",
+                  ],
+                  recipeInstructions: [
+                    { "@type": "HowToStep", name: "Pour milk and water", text: "Pour milk into a pan and add water." },
+                    { "@type": "HowToStep", name: "Boil", text: "Bring it to a gentle boil on medium heat." },
+                    { "@type": "HowToStep", name: "Add tea", text: "Add 1 teaspoon of ST Lounge tea leaves." },
+                    { "@type": "HowToStep", name: "Simmer", text: "Simmer for 2–3 minutes until the flavour develops." },
+                    { "@type": "HowToStep", name: "Strain and serve", text: "Strain into a cup and serve hot." },
+                  ],
+                },
               ],
             }),
           }}

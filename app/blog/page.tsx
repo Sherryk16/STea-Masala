@@ -18,12 +18,12 @@ const PAGE_SIZE = 9;
 export const metadata: Metadata = {
   title: "Blog",
   description:
-    "Stories, brewing guides and masala chai recipes from Stea Masala. Learn how to brew the perfect cup with premium Pakistani masala tea.",
+    "Stories, brewing guides and tea recipes from ST Lounge. Learn how to brew the perfect cup with premium Pakistani tea.",
   alternates: { canonical: "/blog" },
   openGraph: {
-    title: "Blog | Stea Masala",
+    title: "Blog | ST Lounge",
     description:
-      "Stories, brewing guides and masala chai recipes from Stea Masala.",
+      "Stories, brewing guides and tea recipes from ST Lounge.",
     url: "https://steamasala.com/blog",
     type: "website",
   },
@@ -64,7 +64,7 @@ export default async function BlogIndexPage({
         <section className="max-w-7xl mx-auto px-4 sm:px-6 mb-12 sm:mb-16">
           <div className="text-center max-w-3xl mx-auto">
             <p className="text-[11px] tracking-[0.3em] uppercase text-[#9B6322] mb-4">
-              The Stea Masala Journal
+              The ST Lounge Journal
             </p>
             <h1 className="font-playfair text-4xl sm:text-5xl lg:text-6xl leading-[1.1] mb-5">
               Stories from the
